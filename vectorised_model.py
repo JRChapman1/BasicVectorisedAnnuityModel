@@ -2,15 +2,16 @@ import pandas as pd
 import numpy as np
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
+import pathlib
 
 
 # ASSUMPTION DATA
-base_mortality = pd.read_csv('/Users/joshchapman/PycharmProjects/VectorisedAnnuityModel/venv/assumptions/base_mortality.csv', index_col=['x'])
+base_mortality = pd.read_csv(str(pathlib.Path().absolute()) + '/assumptions/base_mortality.csv', index_col=['x'])
 mortality_improvements = pd.read_csv('/Users/joshchapman/PycharmProjects/VectorisedAnnuityModel/venv/assumptions/mortality_improvements.csv', index_col=['Time'])
 discount_rate = 0.05
 
 # POLICY DATA
-policy_data = pd.read_csv('/Users/joshchapman/PycharmProjects/VectorisedAnnuityModel/venv/policy data/annuity_policy_data.csv', index_col=['Policy ID'], parse_dates=['Annuitant Date of Birth', 'First Payment Date'])
+policy_data = pd.read_csv(str(pathlib.Path().absolute()) + '/policy data/annuity_policy_data.csv', index_col=['Policy ID'], parse_dates=['Annuitant Date of Birth', 'First Payment Date'])
 
 # INPUTS
 valuation_date = datetime.strptime('31/12/2019', '%d/%m/%Y')
